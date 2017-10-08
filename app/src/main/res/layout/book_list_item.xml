@@ -16,6 +16,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/book_thumbnail"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="8dp"
@@ -23,17 +24,24 @@
                 android:src="@drawable/book_thumbnail" />
 
             <RelativeLayout
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_weight="1">
 
+                <LinearLayout
+                    android:id="@+id/book_detail_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/book_title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Android Forensics"
+                    tools:text="Android Forensics"
+                    android:layout_weight="1"
                     android:textAppearance="?android:textAppearanceMedium"
                     android:textColor="@android:color/black" />
 
@@ -41,18 +49,20 @@
                     android:id="@+id/book_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
                     android:paddingRight="8dp"
-                    android:text="₹ 356"
+                    android:paddingLeft="8dp"
+                    android:layout_gravity="end"
+                    tools:text="₹ 356"
                     android:textAppearance="?android:textAppearanceSmall"
                     android:textColor="@color/textColorBook" />
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/author_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/book_title"
-                    android:text="Andrew Hoog"
+                    android:layout_below="@id/book_detail_container"
+                    tools:text="Andrew Hoog"
                     android:textAppearance="?android:textAppearanceSmall"
                     android:textColor="@color/textColorBooksDescription" />
 
@@ -64,8 +74,8 @@
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:ellipsize="end"
-                    android:maxLines="5"
-                    android:text="@string/book_description"
+                    android:maxLines="7"
+                    tools:text="@string/book_description"
                     android:textColor="@color/textColorBook" />
 
             </RelativeLayout>

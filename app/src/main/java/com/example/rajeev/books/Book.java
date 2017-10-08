@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 
 /**
  * Created by Rahul on 06-10-2017.
+ * This custom class contains all the data related to book.
  */
 
 class Book {

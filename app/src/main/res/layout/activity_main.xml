@@ -11,14 +11,14 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:fontFamily="sans-serif"
         android:gravity="center"
         android:padding="2dp"
         android:text="@string/app_name"
-        android:textStyle="bold"
-        android:fontFamily="sans-serif"
+        android:textAppearance="?android:textAppearanceMedium"
         android:textColor="@color/cardview_light_background"
-        android:background="@color/colorPrimaryDark"
-        android:textAppearance="?android:textAppearanceMedium" />
+        android:textStyle="bold" />
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -29,10 +29,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:paddingBottom="4dp">
+            android:paddingTop="4dp">
 
 
             <EditText
@@ -40,14 +40,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:inputType="text"
-                android:hint="Enter the title to search for"/>
+                android:hint="Enter the title to search for"
+                android:inputType="text" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/search_button"
-                android:layout_width="wrap_content"
+                android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_weight="0"
+                android:background="?android:attr/selectableItemBackground"
                 android:src="@drawable/ic_search_button" />
 
         </LinearLayout>
@@ -57,32 +58,33 @@
         android:id="@+id/list_view_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ListView
             android:id="@+id/books_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:divider="@null"
-            android:background="@color/forgroundColor"
-            android:dividerHeight="0dp"
-            android:orientation="vertical"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
+            android:background="@color/forgroundColor"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:drawSelectorOnTop="true"
+            android:orientation="vertical" />
 
-       <!-- <ProgressBar
+        <ProgressBar
             android:id="@+id/progress_indicator"
             style="@style/Widget.AppCompat.ProgressBar"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"/>
-
-        <TextView
-            android:id="@+id/empty_state_textView"
-            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textAppearance="?android:textAppearanceMedium"/>-->
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/empty_state_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textAppearance="?android:textAppearanceMedium" />
 
     </RelativeLayout>
 
