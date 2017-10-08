@@ -2,7 +2,7 @@ Books-App
 ===================================
 
 This app displays list of published books and it's detail info based on search keywords given by the user.
-Part of project in Udacity Android Beginners Networking Lesson.
+Part of project given in Udacity Android Basics Networking Lesson.
 
 Pre-requisites
 --------------
