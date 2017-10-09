@@ -26,6 +26,7 @@ import java.util.List;
  */
 class QueryUtils {
 
+    private static final String API_KEY = "AIzaSyCtwsK5-xmfSwLIWQ7kDxc2sRVa99xzWZs";
     private static final String LOG_TAG = QueryUtils.class.getName();
 
     /**
@@ -87,6 +88,7 @@ class QueryUtils {
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setReadTimeout(10000);
             urlConnection.setConnectTimeout(2000);
+            urlConnection.setRequestProperty("key",API_KEY);
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
             if(urlConnection.getResponseCode()== 200){
@@ -181,6 +183,7 @@ class QueryUtils {
                 String authorNames = "";
                 double price;
                 String description;
+                String buyLink = "";
                 JSONObject element = items.getJSONObject(i);
                 String id = element.getString("id");
                 JSONObject volumeInfo = element.getJSONObject("volumeInfo");
@@ -194,15 +197,16 @@ class QueryUtils {
                 String title = volumeInfo.getString("title");
                 JSONArray authors = volumeInfo.optJSONArray("authors");
                 // When book has more than one author
-                if(authors.length()> 1){
-                    for (int j = 0;j < authors.length();j++ ){
-                        authorNames += authors.getString(j);
-                        authorNames += " ";
+                if(authors!=null){
+                    if(authors.length()> 1){
+                        for (int j = 0;j < authors.length();j++ ){
+                            authorNames += authors.getString(j);
+                            authorNames += " ";
+                        }
+                    } else{
+                        authorNames = authors.getString(0);
                     }
-                } else{
-                    authorNames = authors.getString(0);
                 }
-
                 JSONObject imageLinks = volumeInfo.getJSONObject("imageLinks");
                 String imageUrl = imageLinks.getString("thumbnail");
                 // Loading the bitmap from given imageUrl
@@ -210,13 +214,14 @@ class QueryUtils {
                 JSONObject saleInfo = element.getJSONObject("saleInfo");
                 String saleability = saleInfo.getString("saleability");
                 // When book is not for sale
-                if(saleability.equals("NOT_FOR_SALE")){
+                if(saleability.equals("NOT_FOR_SALE" )|| saleInfo.optJSONObject("retailPrice")==null){
                     // set price to 0.0
                     price = 0.0;
                 }else{
-                    price = saleInfo.getJSONObject("retailPrice").getDouble("amount");
+                    price = saleInfo.optJSONObject("retailPrice").getDouble("amount");
+                    buyLink = saleInfo.getString("buyLink");
                 }
-                books.add(new Book(id, title, authorNames,bookThumbnail, description, price));
+                books.add(new Book(id, title, authorNames,bookThumbnail, description, price, buyLink));
             }
             // returns a list of books
             return books;

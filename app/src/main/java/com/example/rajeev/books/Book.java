@@ -14,22 +14,29 @@ class Book {
     private Bitmap mThumbnail;
     private String mDescription;
     private double mPrice;
+    private String mBuyLink;
 
-    public Book(String mId, String mTitle, String mAuthor, Bitmap mThumbnail,String mDescription, double mPrice) {
+    public Book(String mId, String mTitle, String mAuthor, Bitmap mThumbnail,String mDescription, double mPrice, String mBuyLink) {
         this.mId = mId;
         this.mTitle = mTitle;
         this.mAuthor = mAuthor;
         this.mThumbnail = mThumbnail;
         this.mDescription = mDescription;
         this.mPrice = mPrice;
+        this.mBuyLink = mBuyLink;
     }
 
-    public Book(String mId, String mTitle, String mAuthor,String mDescription, double mPrice) {
+    public Book(String mId, String mTitle, String mAuthor,String mDescription, double mPrice, String mBuyLink) {
         this.mId = mId;
         this.mTitle = mTitle;
         this.mAuthor = mAuthor;
         this.mDescription = mDescription;
         this.mPrice = mPrice;
+        this.mBuyLink = mBuyLink;
+    }
+
+    public String getmBuyLink() {
+        return mBuyLink;
     }
 
     public String getmId() {
