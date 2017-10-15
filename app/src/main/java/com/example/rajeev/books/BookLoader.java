@@ -29,7 +29,6 @@ class BookLoader extends AsyncTaskLoader<List<Book>> {
         if(urls.length < 1 || urls[0] == null){
             return null;
         }
-        Log.wtf(LOG_TAG, "Background thread started!");
         return QueryUtils.fetchBooksData(urls[0]);
     }
 
