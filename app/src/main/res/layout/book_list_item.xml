@@ -54,7 +54,7 @@
                     android:layout_gravity="end"
                     tools:text="₹ 356"
                     android:textAppearance="?android:textAppearanceSmall"
-                    android:textColor="@color/textColorBook" />
+                    android:textColor="@color/bookDescriptionTextColor" />
                 </LinearLayout>
 
                 <TextView
@@ -64,7 +64,7 @@
                     android:layout_below="@id/book_detail_container"
                     tools:text="Andrew Hoog"
                     android:textAppearance="?android:textAppearanceSmall"
-                    android:textColor="@color/textColorBooksDescription" />
+                    android:textColor="@color/authorTextColor" />
 
                 <TextView
                     android:id="@+id/book_description"
@@ -76,7 +76,7 @@
                     android:ellipsize="end"
                     android:maxLines="7"
                     tools:text="@string/book_description"
-                    android:textColor="@color/textColorBook" />
+                    android:textColor="@color/bookDescriptionTextColor" />
 
             </RelativeLayout>
 

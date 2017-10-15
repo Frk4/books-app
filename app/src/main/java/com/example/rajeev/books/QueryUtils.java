@@ -26,7 +26,6 @@ import java.util.List;
  */
 class QueryUtils {
 
-    private static final String API_KEY = "AIzaSyCtwsK5-xmfSwLIWQ7kDxc2sRVa99xzWZs";
     private static final String LOG_TAG = QueryUtils.class.getName();
 
     /**
@@ -88,8 +87,6 @@ class QueryUtils {
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setReadTimeout(10000);
             urlConnection.setConnectTimeout(2000);
-            urlConnection.setRequestProperty("key",API_KEY);
-            urlConnection.setRequestMethod("GET");
             urlConnection.connect();
             if(urlConnection.getResponseCode()== 200){
                 Log.wtf(LOG_TAG,"Connection Success!");

@@ -49,8 +49,7 @@ public class MainActivity extends AppCompatActivity
         listView.setEmptyView(emptyTextView);
         ImageView searchButton = (ImageView) findViewById(R.id.search_button);
         progressBar =(ProgressBar) findViewById(R.id.progress_indicator);
-        List<Book> list = new ArrayList<>();
-        bookAdapter = new BookAdapter(this, list);
+        bookAdapter = new BookAdapter(this, new ArrayList<Book>());
 
 
         boolean isConnected = checkInternetConnectivity();
@@ -73,11 +72,11 @@ public class MainActivity extends AppCompatActivity
                     progressBar.setVisibility(View.VISIBLE);
                     getLoaderManager().restartLoader(BOOK_LOADER_ID, null, MainActivity.this);
                 }else if(!isConnected){
-                    Toast.makeText(getBaseContext(), "Please check your internet connection.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), "Please check your internet connection.", Toast.LENGTH_SHORT).show();
                 }else if(searchQuery.isEmpty()){
                     {
                         // Handle empty search query
-                        Toast.makeText(getBaseContext(), "I can't find books without title name.",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getBaseContext(), "I can't find anonymous books.", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -125,6 +124,10 @@ public class MainActivity extends AppCompatActivity
         return url;
     }
 
+    /**
+     * Helper method to hide soft keyboard when search button is clicked.
+     * @param activity takes current activity context
+     */
     private static void hideSoftKeyboard(Activity activity) {
         InputMethodManager inputMethodManager =
                 (InputMethodManager) activity.getSystemService(
@@ -137,6 +140,7 @@ public class MainActivity extends AppCompatActivity
     public Loader<List<Book>> onCreateLoader(int id, Bundle args) {
         Log.wtf(LOG_TAG,"Loader Initiated! with id:" + BOOK_LOADER_ID);
         return new BookLoader(this, getSearchUrl(baseUrl));
+
     }
 
     @Override
@@ -153,7 +157,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onLoaderReset(Loader<List<Book>> loader) {
         Log.wtf(LOG_TAG,"Loader reset! with id:" + BOOK_LOADER_ID);
-
         bookAdapter.clear();
     }
+
 }
